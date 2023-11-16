@@ -3,10 +3,11 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
-	color: #222;
-	background-color: #FaFaFa;
+	color: aliceblue;
+	background-image: linear-gradient(#172554, #1e40af);
 	text-align: center;
 	line-height: 1.4em;
+	height: 100vh;
 }
 
 .container {
@@ -16,6 +17,7 @@ body {
 
 h3 {
   margin-top: 30px;
+
 }
 
 hr {
@@ -35,12 +37,21 @@ code {
 
 ul {
 	list-style-type: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 li {
   margin-bottom: 0.5em;
+  text-align: left;
 }
 
 a {
-	color: #2574A9;
+	style: none;
+	color: #334155;
+}
+a: hover {
+	color: #94a3b8;
 }
