@@ -4,7 +4,9 @@
   "description": "An FCC Backend Challenge",
   "main": "index.js",
   "scripts": {
-    "start": "tsx watch index.ts"
+    "start": "tsx watch index.ts",
+    "tsc": "tsc",
+    "start:prod": "node build/index.js"
   },
   "dependencies": {
     "cors": "^2.8.0",
