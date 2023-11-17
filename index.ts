@@ -12,13 +12,12 @@ const app = express();
 app.use(cors());
 
 // http://expressjs.com/en/starter/static-files.html
-app.use(express.static('public'));
+app.use(express.static(__dirname + 'public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
-
 
 // your first API endpoint... 
 app.get("/api/hello", (req, res) => {
