@@ -62,7 +62,7 @@ app.get('/api/', (req, res)=> {
 
 
 // listen for requests :)
-const port = 3333
-app.listen(3333, () => {
+const port = process.env.PORT || 3333;
+app.listen(port, () => {
   console.log('Your app is listening on http://localhost:' + port);
 });
