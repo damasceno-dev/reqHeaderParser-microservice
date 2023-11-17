@@ -4,6 +4,7 @@ import express from 'express'
 // overflow y hidden 
 // 2) change 'link' styles  and colors to be like tailwind
 
+
 const app = express();
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
@@ -26,7 +27,7 @@ app.get("/api/hello", (req, res) => {
 
 const isDateValid = (dateStr: string) : Date | undefined => {
   let dateObj
-  if (dateStr === 'now') {
+  if (dateStr === 'now' || dateStr.length === 0) {
     dateObj = new Date()
   } else {
     dateObj = new Date(dateStr);
@@ -43,7 +44,7 @@ app.get('/api/:date', (req, res) => {
   const dateStr:string = req.params.date;
   const date = isDateValid(dateStr)
   if (date === undefined) {
-    return res.json('invalid date')
+    return res.json({ error : "Invalid Date" })
   } 
 
   const utcDate = date.toUTCString();
@@ -51,7 +52,7 @@ app.get('/api/:date', (req, res) => {
   return res.json({unix: unixDate, utc: utcDate})
 })
 
-app.get('/api/now', (req, res)=> {
+app.get('/api/', (req, res)=> {
   const date = new Date()
   const utcDate = date.toUTCString();
   const unixDate = Math.floor( date.getTime() /1000)
@@ -63,5 +64,5 @@ app.get('/api/now', (req, res)=> {
 // listen for requests :)
 const port = 3333
 app.listen(3333, () => {
-  console.log('Your app is listening on port ' + port);
+  console.log('Your app is listening on http://localhost:' + port);
 });
