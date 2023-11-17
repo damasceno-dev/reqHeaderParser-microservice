@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 
 // http://expressjs.com/en/starter/static-files.html
-app.use(express.static(__dirname + 'public'));
+app.use(express.static(__dirname + '/public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", (req, res) => {
