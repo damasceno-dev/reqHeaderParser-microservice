@@ -24,13 +24,18 @@ app.get("/api/hello", (req, res) => {
   res.json({greeting: 'hello API'});
 });
 
-const isDateValid = (dateStr: string) : Date | undefined => {
-  let dateObj
-  if (dateStr === 'now' || dateStr.length === 0) {
-    dateObj = new Date()
-  } else {
+const isDateValid = (dateStr: string | undefined ) : Date | undefined => {
+  let dateObj: Date | undefined
+  if (!dateStr)   {
+    dateObj = new Date();
+  } else if(!isNaN(Number(dateStr))) {
+    dateObj = new Date();
+    dateObj.setTime(Number(dateStr))
+  }
+  else {
     dateObj = new Date(dateStr);
   }
+  console.log(dateObj)
    
   if (isNaN(dateObj.getTime())) {
     return undefined
@@ -39,8 +44,8 @@ const isDateValid = (dateStr: string) : Date | undefined => {
   }
 }
 
-app.get('/api/:date', (req, res) => {
-  const dateStr:string = req.params.date;
+app.get('/api/:date?', (req, res) => {
+  const dateStr:string | undefined = req.params.date;
   const date = isDateValid(dateStr)
   if (date === undefined) {
     return res.json({ error : "Invalid Date" })
@@ -51,14 +56,13 @@ app.get('/api/:date', (req, res) => {
   return res.json({unix: unixDate, utc: utcDate})
 })
 
-app.get('/api/', (req, res)=> {
-  const date = new Date()
-  const utcDate = date.toUTCString();
-  const unixDate = Math.floor( date.getTime() /1000)
-  return res.json({unix: unixDate, utc: utcDate})
-})
-
-
+// app.get('/api/', (req, res)=> {
+//   console.log('opa')
+//   const date = new Date()
+//   const utcDate = date.toUTCString();
+//   const unixDate = Math.floor( date.getTime() /1000)
+//   return res.json({unix: unixDate, utc: utcDate})
+// })
 
 // listen for requests :)
 const port = process.env.PORT || 3333;
