@@ -2,28 +2,25 @@
 
 <html>
    <head>
-      <title>damasceno.dev | Timestamp Microservice</title>
+      <title>damasceno.dev | Request Header Parser Microservice</title>
       <link rel="shortcut icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon-32x32.png" type="image/x-icon"/>
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
       <link href="style.css" rel="stylesheet" type="text/css">
    </head>
 
    <body>
-    <h1>Timestamp Microservice</h1>
+    <h1>Request Header Parser Microservice</h1>
     <hr />
     <div class="container">
       <h3>Example Usage:</h3>
       <ul>
-        <div>
-          <li><a target="_blank" href="api/">[project url]/api/</a></li>
-          <li><a target="_blank" href="api/2023-11-16">[project url]/api/2023-11-16</a></li>
-          <li><a target="_blank" href="api/1700092800000">[project url]/api/1700092800000</a></li>
-        </div>
+          <li><a target="_blank" href="api/whoami">[base_url]/api/whoami</a></li>
       </ul>
 
       <h3>Example Output:</h3>
       <p>
-        <code>{"unix":1700092800000,"utc":"Thu, 16 Nov 2023 00:00:00 GMT"}</code>
+        <code>{"ipaddress":"159.20.14.100","language":"en-US,en;q=0.5",
+          "software":"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"}</code>
       </p>
     </div>
     <div class="footer">
