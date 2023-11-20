@@ -15,15 +15,15 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
 
+//If you set app.set('trust proxy', true), req.ip will return the real IP address even if behind proxy. 
 app.set('trust proxy', true)
 
 
 app.get("/api/whoami", (req, res) => {
-  console.log(req.headers)
   const language = req.headers['accept-language'];
   const software = req.headers['user-agent'];
   const ipaddress = req.ip;
-  console.log(req.ip)
+
   return res.json({
     "ipaddress": ipaddress,
     "language": language,
